@@ -1,0 +1,372 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.login-page {
+  --ink: #17231f;
+  --muted: #718078;
+  --line: #dbe4dd;
+  --accent: #e36e45;
+  --accent-dark: #c95630;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(420px, 0.92fr) minmax(480px, 1.08fr);
+  background: #f6f8f4;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.welcome-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 7rem);
+  background: #dce9df;
+  isolation: isolate;
+}
+
+.welcome-panel::before,
+.welcome-panel::after {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(23, 35, 31, 0.11);
+  border-radius: 50%;
+  content: '';
+}
+
+.welcome-panel::before {
+  width: 38rem;
+  height: 38rem;
+  right: -17rem;
+  top: 7%;
+}
+
+.welcome-panel::after {
+  width: 25rem;
+  height: 25rem;
+  left: -14rem;
+  bottom: -9rem;
+}
+
+.brand-mark,
+.mobile-brand {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.brand-mark {
+  margin-bottom: 5rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent-dark);
+  font-family: Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.welcome-panel h1 {
+  max-width: 33rem;
+  margin: 0;
+  font-size: clamp(3.5rem, 5.8vw, 6.4rem);
+  font-weight: 400;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+}
+
+.welcome-copy {
+  max-width: 27rem;
+  margin: 2rem 0 0;
+  color: #50635a;
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.signal {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 5rem 0 1.5rem;
+}
+
+.signal-line {
+  width: 4.2rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.signal-line-short {
+  width: 1.5rem;
+  opacity: 0.45;
+}
+
+.signal-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.quote {
+  max-width: 18rem;
+  margin: 0;
+  color: #53635a;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.form-panel {
+  display: grid;
+  place-items: center;
+  padding: 3rem 2rem;
+  background: #fbfcfa;
+}
+
+.form-wrap {
+  width: min(100%, 28rem);
+}
+
+.mobile-brand {
+  display: none;
+}
+
+.form-panel h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.intro {
+  margin: 1rem 0 2.8rem;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.94rem;
+}
+
+form {
+  display: grid;
+  gap: 1.45rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 0.55rem;
+}
+
+label,
+.label-row {
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label-row a,
+.signup-prompt a,
+.legal-copy a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+.label-row a:hover,
+.signup-prompt a:hover,
+.legal-copy a:hover {
+  text-decoration: underline;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='text'] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  background: white;
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  padding: 0.95rem 1rem;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(227, 110, 69, 0.13);
+}
+
+input::placeholder {
+  color: #a5b0aa;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 3rem;
+}
+
+.visibility-button {
+  position: absolute;
+  top: 50%;
+  right: 0.8rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.visibility-button:hover {
+  color: var(--accent-dark);
+}
+
+.field-error,
+.success-message {
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+}
+
+.field-error {
+  color: #b84b3c;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.remember-option input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+}
+
+.submit-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 3.2rem;
+  border: 0;
+  border-radius: 0.3rem;
+  padding: 0.9rem 1.1rem 0.9rem 1.25rem;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.submit-button span {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.success-message {
+  margin: -0.55rem 0 0;
+  color: #3f8060;
+}
+
+.signup-prompt,
+.legal-copy {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.signup-prompt {
+  margin: 2.8rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legal-copy {
+  margin: 1.2rem 0 0;
+  color: #99a49e;
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    display: block;
+  }
+
+  .welcome-panel {
+    min-height: 18rem;
+    padding: 2.2rem 1.5rem 2.7rem;
+  }
+
+  .brand-mark {
+    display: none;
+  }
+
+  .welcome-panel h1 {
+    max-width: 28rem;
+    font-size: clamp(2.7rem, 11vw, 4.4rem);
+  }
+
+  .welcome-copy {
+    max-width: 28rem;
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .signal {
+    margin: 2rem 0 0;
+  }
+
+  .quote {
+    display: none;
+  }
+
+  .form-panel {
+    display: block;
+    padding: 3.2rem 1.5rem 2.5rem;
+  }
+
+  .mobile-brand {
+    display: grid;
+    margin-bottom: 2.5rem;
+  }
+}
