@@ -1,0 +1,97 @@
+<main class="login-page">
+  <section class="welcome-panel" aria-label="Welcome to Northstar">
+    <div class="brand-mark" aria-hidden="true">N</div>
+    <p class="eyebrow">Northstar workspace</p>
+    <h1>Make room for your best work.</h1>
+    <p class="welcome-copy">
+      A calm, focused home for the ideas, projects, and people moving your work forward.
+    </p>
+    <div class="signal" aria-hidden="true">
+      <span class="signal-line"></span>
+      <span class="signal-dot"></span>
+      <span class="signal-line signal-line-short"></span>
+    </div>
+    <p class="quote">“Clarity is a superpower when the work gets complicated.”</p>
+  </section>
+
+  <section class="form-panel">
+    <div class="form-wrap">
+      <div class="mobile-brand" aria-hidden="true">N</div>
+      <p class="eyebrow">Welcome back</p>
+      <h2>Sign in to Northstar</h2>
+      <p class="intro">Pick up exactly where you left off.</p>
+
+      <form (ngSubmit)="submit()" #loginForm="ngForm">
+        <div class="field-group">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@company.com"
+            autocomplete="email"
+            [(ngModel)]="email"
+            required
+            email
+            #emailInput="ngModel"
+          />
+          @if (emailInput.invalid && emailInput.touched) {
+            <span class="field-error">Enter a valid email address.</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <div class="label-row">
+            <label for="password">Password</label>
+            <a href="/forgot-password">Forgot password?</a>
+          </div>
+          <div class="password-input">
+            <input
+              id="password"
+              name="password"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              [(ngModel)]="password"
+              required
+              minlength="6"
+              #passwordInput="ngModel"
+            />
+            <button
+              type="button"
+              class="visibility-button"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+              (click)="showPassword = !showPassword"
+            >
+              @if (showPassword) {
+                <span aria-hidden="true">◉</span>
+              } @else {
+                <span aria-hidden="true">○</span>
+              }
+            </button>
+          </div>
+          @if (passwordInput.invalid && passwordInput.touched) {
+            <span class="field-error">Password must be at least 6 characters.</span>
+          }
+        </div>
+
+        <label class="remember-option">
+          <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" />
+          <span>Keep me signed in</span>
+        </label>
+
+        <button class="submit-button" type="submit" [disabled]="loginForm.invalid">
+          Sign in
+          <span aria-hidden="true">→</span>
+        </button>
+
+        @if (submitted && loginForm.valid) {
+          <p class="success-message" role="status">You’re signed in. Welcome back.</p>
+        }
+      </form>
+
+      <p class="signup-prompt">New to Northstar? <a href="/sign-up">Create an account</a></p>
+      <p class="legal-copy">By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</p>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,74 @@
+<main class="registration-page">
+  <section class="registration-card">
+    <a class="back-link" routerLink="/login">← Back to sign in</a>
+
+    <div class="brand-mark" aria-hidden="true">N</div>
+    <p class="eyebrow">Northstar workspace</p>
+    <h1>Register an employee</h1>
+    <p class="intro">Add a team member to your workspace with a few essential details.</p>
+
+    <form (ngSubmit)="submit()" #registrationForm="ngForm">
+      <div class="field-group">
+        <label for="full-name">Full name</label>
+        <input
+          id="full-name"
+          name="fullName"
+          type="text"
+          placeholder="e.g. Maya Chen"
+          autocomplete="name"
+          [(ngModel)]="fullName"
+          required
+        />
+      </div>
+
+      <div class="field-group">
+        <label for="work-email">Work email</label>
+        <input
+          id="work-email"
+          name="workEmail"
+          type="email"
+          placeholder="maya@company.com"
+          autocomplete="email"
+          [(ngModel)]="workEmail"
+          required
+          email
+        />
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="employee-id">Employee ID</label>
+          <input
+            id="employee-id"
+            name="employeeId"
+            type="text"
+            placeholder="NS-1042"
+            [(ngModel)]="employeeId"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="department">Department</label>
+          <select id="department" name="department" [(ngModel)]="department" required>
+            <option value="" disabled>Select one</option>
+            <option value="design">Design</option>
+            <option value="engineering">Engineering</option>
+            <option value="finance">Finance</option>
+            <option value="marketing">Marketing</option>
+            <option value="operations">Operations</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="submit-button" type="submit" [disabled]="registrationForm.invalid">
+        Register employee
+        <span aria-hidden="true">→</span>
+      </button>
+
+      @if (submitted && registrationForm.valid) {
+        <p class="success-message" role="status">Employee registered successfully.</p>
+      }
+    </form>
+  </section>
+</main>
