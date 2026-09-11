@@ -1,0 +1,42 @@
+<main class="dashboard-shell">
+	<aside class="sidebar">
+		<a class="brand" routerLink="/admin-dashboard"><span class="brand-mark">N</span>northstar</a>
+		<p class="nav-label">Workspace</p>
+		<nav aria-label="Main navigation">
+			<a class="nav-item active" routerLink="/admin-dashboard">⌂ <span>Overview</span></a>
+			<a class="nav-item" routerLink="/employee-registration">＋ <span>Add employee</span></a>
+			<a class="nav-item" href="#employees">▦ <span>Employees</span></a>
+		</nav>
+		<div class="sidebar-footer">
+			<div class="profile"><span class="avatar coral">AD</span><span><strong>Admin</strong><small>Workspace owner</small></span></div>
+			<a class="sign-out" routerLink="/login">Sign out ↗</a>
+		</div>
+	</aside>
+
+	<section class="content">
+		<header class="topbar">
+			<div><p class="eyebrow">Workspace overview</p><h1>Good morning, Admin.</h1><p class="subtitle">Here’s what’s happening across your workspace.</p></div>
+			<a class="primary-button" routerLink="/employee-registration">＋ Add employee</a>
+		</header>
+
+		<section class="metrics" aria-label="Workspace summary">
+			<article class="metric"><span class="metric-icon coral">♧</span><div><p>Total employees</p><strong>{{ employees.length }}</strong><small>+2 this month</small></div></article>
+			<article class="metric"><span class="metric-icon blue">✓</span><div><p>Active employees</p><strong>{{ activeEmployees }}</strong><small>Currently working</small></div></article>
+			<article class="metric"><span class="metric-icon purple">◷</span><div><p>On leave</p><strong>{{ employees.length - activeEmployees }}</strong><small>Returning soon</small></div></article>
+		</section>
+
+		<section id="employees">
+			<div class="section-heading"><div><p class="eyebrow">Team directory</p><h2>All employees</h2></div><button type="button" class="filter">Filter ⌄</button></div>
+			<div class="table-card">
+				<div class="table-header"><span>Employee</span><span>Department</span><span>Status</span></div>
+				@for (employee of employees; track employee.name) {
+					<div class="employee-row">
+						<div class="employee"><span class="avatar">{{ employee.initials }}</span><span><strong>{{ employee.name }}</strong><small>{{ employee.role }}</small></span></div>
+						<span>{{ employee.department }}</span>
+						<span class="status" [class.leave]="employee.status === 'On leave'"><i></i>{{ employee.status }}</span>
+					</div>
+				}
+			</div>
+		</section>
+	</section>
+</main>

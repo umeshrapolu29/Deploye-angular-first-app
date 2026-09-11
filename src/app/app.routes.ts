@@ -12,6 +12,13 @@ export const routes: Routes = [
 				(component) => component.EmployeeRegistration
 			)
 	},
+	{
+		path: 'admin-dashboard',
+		loadComponent: () =>
+			import('./layouts/admin-dashboard/admin-dashboard/admin-dashboard').then(
+				(component) => component.AdminDashboard
+			)
+	},
 	{ path: 'register', pathMatch: 'full', redirectTo: 'employee-registration' },
 	{ path: '', pathMatch: 'full', redirectTo: 'login' },
 	{ path: '**', redirectTo: 'login' }
